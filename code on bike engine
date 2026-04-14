@@ -1,0 +1,22 @@
+#ifndef ENGINE_H
+#define ENGINE_H
+
+typedef enum { NEUTRAL, FIRST, SECOND, THIRD, FOURTH, FIFTH, SIXTH } Gear;
+
+typedef struct {
+    char engine_type[30]; // e.g., "Single-Cylinder 4-Stroke"
+    int cc;               // Displacement (e.g., 600)
+    int rpm;
+    int temperature;
+    Gear current_gear;
+    int throttle_pos;     // 0 to 100 percent
+    int is_started;
+} BikeEngine;
+
+// Function Prototypes
+void ignition(BikeEngine *e);
+void apply_throttle(BikeEngine *e, int amount);
+void shift_gear(BikeEngine *e, Gear new_gear);
+void update_engine_state(BikeEngine *e);
+
+#endif
